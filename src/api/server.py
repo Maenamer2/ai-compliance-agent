@@ -11,9 +11,9 @@ except ImportError:
     print("Please install FastAPI: pip install fastapi uvicorn")
     sys.exit(1)
 
-from ..assessor import AIComplianceAssessor
-from ..assessor.models import AssessmentResult
-from ..reports import ReportGenerator
+from src.assessor import AIComplianceAssessor
+from src.assessor.models import AssessmentResult
+from src.reports import ReportGenerator
 
 
 app = FastAPI(

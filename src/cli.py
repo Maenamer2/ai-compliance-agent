@@ -13,9 +13,9 @@ except ImportError:
     print("Please install required packages: pip install click rich")
     sys.exit(1)
 
-from .assessor import AIComplianceAssessor
-from .assessor.models import AISystemInfo
-from .reports import ReportGenerator
+from src.assessor import AIComplianceAssessor
+from src.assessor.models import AISystemInfo
+from src.reports import ReportGenerator
 
 
 console = Console()
