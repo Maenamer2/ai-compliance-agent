@@ -44,8 +44,11 @@ htmlcov/
 reports/
 *.pdf
 *.html
-*.md
+
+# Documentation - keep important docs
 !README.md
+!QUICKSTART.md
+!docs/*.md
 
 # OS
 .DS_Store
