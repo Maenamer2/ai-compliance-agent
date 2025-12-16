@@ -4,7 +4,7 @@ from typing import List
 from .base import SecurityChecker
 from ..assessor.models import (
     AISystemInfo, SecurityAssessment, Finding,
-    RiskLevel
+    RiskLevel, ComplianceStatus
 )
 
 
@@ -37,7 +37,7 @@ class SupplyChainChecker(SecurityChecker):
             title="Dependency vulnerability scanning required",
             description="AI systems often depend on numerous libraries that may contain vulnerabilities.",
             severity=RiskLevel.HIGH,
-            status=RiskLevel.HIGH,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) Automated dependency scanning (Snyk, Dependabot), "
                           "2) Regular updates, 3) Vulnerability monitoring, "
                           "4) Software Bill of Materials (SBOM), 5) License compliance checks",
@@ -52,7 +52,7 @@ class SupplyChainChecker(SecurityChecker):
             title="Third-party model security assessment required",
             description="Using pre-trained models or model APIs from third parties introduces supply chain risks.",
             severity=RiskLevel.HIGH,
-            status=RiskLevel.HIGH,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) Model provenance verification, 2) Vendor security assessment, "
                           "3) Model integrity checks, 4) Licensing review, "
                           "5) Model testing and validation before use",
@@ -67,7 +67,7 @@ class SupplyChainChecker(SecurityChecker):
             title="Training data provenance and validation required",
             description="Verify the source and integrity of training datasets to prevent poisoning.",
             severity=RiskLevel.MEDIUM,
-            status=RiskLevel.MEDIUM,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) Data source documentation, 2) Data integrity verification, "
                           "3) License compliance, 4) Data quality assessment, "
                           "5) Poisoning detection",
@@ -82,7 +82,7 @@ class SupplyChainChecker(SecurityChecker):
             title="Open source component management required",
             description="Track and manage open source ML frameworks and libraries.",
             severity=RiskLevel.MEDIUM,
-            status=RiskLevel.MEDIUM,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) Open source inventory, 2) License compliance, "
                           "3) Security advisories monitoring, 4) Update procedures, "
                           "5) Alternative component evaluation",
@@ -97,7 +97,7 @@ class SupplyChainChecker(SecurityChecker):
             title="Secure model registry and repository practices",
             description="Models from public repositories (HuggingFace, ModelZoo) may be malicious or compromised.",
             severity=RiskLevel.MEDIUM,
-            status=RiskLevel.MEDIUM,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) Model scanning before use, 2) Trusted sources only, "
                           "3) Model signature verification, 4) Sandboxed testing, "
                           "5) Internal model registry",
@@ -112,7 +112,7 @@ class SupplyChainChecker(SecurityChecker):
             title="Third-party API and cloud service security",
             description="Dependencies on external AI APIs and cloud services create supply chain risks.",
             severity=RiskLevel.MEDIUM,
-            status=RiskLevel.MEDIUM,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) Vendor security assessment, 2) SLA and data protection agreements, "
                           "3) Service availability monitoring, 4) Fallback strategies, "
                           "5) Data residency compliance",
@@ -127,7 +127,7 @@ class SupplyChainChecker(SecurityChecker):
             title="Secure ML build and training pipelines",
             description="Protect the ML build, training, and deployment pipelines from compromise.",
             severity=RiskLevel.HIGH,
-            status=RiskLevel.HIGH,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) Pipeline access controls, 2) Code signing, "
                           "3) Secure CI/CD, 4) Audit logging, "
                           "5) Integrity verification at each stage",
@@ -142,7 +142,7 @@ class SupplyChainChecker(SecurityChecker):
             title="Protection against malicious packages",
             description="Typosquatting and malicious packages in ML ecosystems (PyPI, npm) are increasing.",
             severity=RiskLevel.MEDIUM,
-            status=RiskLevel.MEDIUM,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) Package verification, 2) Private package repository, "
                           "3) Dependency pinning, 4) Code review for new dependencies, "
                           "5) Package integrity checks",
@@ -157,7 +157,7 @@ class SupplyChainChecker(SecurityChecker):
             title="Vendor security assessments required",
             description="Conduct security assessments of all AI-related vendors and partners.",
             severity=RiskLevel.MEDIUM,
-            status=RiskLevel.MEDIUM,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) Vendor questionnaires, 2) Security certifications review, "
                           "3) Regular audits, 4) Contractual security requirements, "
                           "5) Incident notification requirements",
@@ -172,7 +172,7 @@ class SupplyChainChecker(SecurityChecker):
             title="Update and patch management process required",
             description="Establish procedures for updating ML frameworks, libraries, and models.",
             severity=RiskLevel.MEDIUM,
-            status=RiskLevel.MEDIUM,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) Patch assessment process, 2) Testing before deployment, "
                           "3) Automated updates for critical patches, 4) Rollback procedures, "
                           "5) Update tracking and reporting",

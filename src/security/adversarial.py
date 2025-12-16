@@ -4,7 +4,7 @@ from typing import List
 from .base import SecurityChecker
 from ..assessor.models import (
     AISystemInfo, SecurityAssessment, Finding,
-    RiskLevel
+    RiskLevel, ComplianceStatus
 )
 
 
@@ -39,7 +39,7 @@ class AdversarialChecker(SecurityChecker):
             description="AI models are vulnerable to adversarial examples - carefully crafted inputs "
                        "designed to cause misclassification or incorrect outputs.",
             severity=RiskLevel.HIGH,
-            status=RiskLevel.HIGH,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) Adversarial training, 2) Input preprocessing/detection, "
                           "3) Ensemble methods, 4) Gradient masking, 5) Certified defenses, "
                           "6) Regular adversarial testing",
@@ -56,7 +56,7 @@ class AdversarialChecker(SecurityChecker):
                 description="Attackers may reconstruct sensitive training data by querying the model, "
                            "potentially exposing private information.",
                 severity=RiskLevel.HIGH,
-                status=RiskLevel.HIGH,
+                status=ComplianceStatus.UNKNOWN,
                 recommendation="Implement: 1) Differential privacy, 2) Query limiting, "
                               "3) Output perturbation, 4) Knowledge distillation, "
                               "5) Privacy-preserving training",
@@ -73,7 +73,7 @@ class AdversarialChecker(SecurityChecker):
                 description="Attackers can determine if specific data was in the training set, "
                            "potentially revealing confidential information.",
                 severity=RiskLevel.MEDIUM,
-                status=RiskLevel.MEDIUM,
+                status=ComplianceStatus.UNKNOWN,
                 recommendation="Implement: 1) Differential privacy, 2) Regularization, "
                               "3) Model ensembling, 4) Confidence calibration, "
                               "5) Membership inference testing",
@@ -89,7 +89,7 @@ class AdversarialChecker(SecurityChecker):
             description="Models may contain backdoors that activate on specific triggers, "
                        "causing malicious behavior while appearing normal otherwise.",
             severity=RiskLevel.MEDIUM,
-            status=RiskLevel.MEDIUM,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) Training data validation, 2) Backdoor detection scanning, "
                           "3) Model provenance tracking, 4) Activation analysis, "
                           "5) Neural cleanse techniques",
@@ -105,7 +105,7 @@ class AdversarialChecker(SecurityChecker):
             description="Attackers may inject malicious data to corrupt model behavior, "
                        "especially in systems using online learning or user feedback.",
             severity=RiskLevel.MEDIUM,
-            status=RiskLevel.MEDIUM,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) Data validation and sanitization, 2) Anomaly detection, "
                           "3) Robust training algorithms, 4) Data provenance, "
                           "5) Regular model retraining with clean data",
@@ -122,7 +122,7 @@ class AdversarialChecker(SecurityChecker):
                 description="Vision models are vulnerable to physical adversarial attacks like "
                            "adversarial patches or modified objects in the real world.",
                 severity=RiskLevel.HIGH,
-                status=RiskLevel.HIGH,
+                status=ComplianceStatus.UNKNOWN,
                 recommendation="Implement: 1) Multi-angle/multi-sensor fusion, 2) Physical attack detection, "
                               "3) Robustness to transformations, 4) Certified physical robustness, "
                               "5) Regular physical security testing",
@@ -138,7 +138,7 @@ class AdversarialChecker(SecurityChecker):
             description="Attackers can create a copy of the model by querying it and training "
                        "a substitute model, stealing intellectual property.",
             severity=RiskLevel.MEDIUM,
-            status=RiskLevel.MEDIUM,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) Query rate limiting, 2) API access controls, "
                           "3) Prediction obfuscation, 4) Watermarking, "
                           "5) Anomalous query detection",
@@ -155,7 +155,7 @@ class AdversarialChecker(SecurityChecker):
                 description=f"The {system_info.use_case} use case requires certified adversarial "
                            "robustness and comprehensive security validation.",
                 severity=RiskLevel.CRITICAL,
-                status=RiskLevel.CRITICAL,
+                status=ComplianceStatus.UNKNOWN,
                 recommendation="Implement: 1) Certified adversarial defenses, 2) Formal verification, "
                               "3) Red team testing, 4) Continuous security monitoring, "
                               "5) Safety fallback mechanisms",

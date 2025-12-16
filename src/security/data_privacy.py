@@ -4,7 +4,7 @@ from typing import List
 from .base import SecurityChecker
 from ..assessor.models import (
     AISystemInfo, SecurityAssessment, Finding,
-    RiskLevel
+    RiskLevel, ComplianceStatus
 )
 
 
@@ -47,7 +47,7 @@ class DataPrivacyChecker(SecurityChecker):
                     title="No sensitive data detected",
                     description="System does not appear to process sensitive personal data.",
                     severity=RiskLevel.LOW,
-                    status=RiskLevel.LOW,
+                    status=ComplianceStatus.UNKNOWN,
                     recommendation="Continue to monitor data types and reassess if data handling changes.",
                     references=[]
                 )],
@@ -61,7 +61,7 @@ class DataPrivacyChecker(SecurityChecker):
             title="PII detection and protection required",
             description="System processes personal/sensitive data and must implement PII protection.",
             severity=RiskLevel.CRITICAL,
-            status=RiskLevel.CRITICAL,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) PII detection and classification, 2) Data masking/redaction, "
                           "3) De-identification, 4) Tokenization, 5) Access logging",
             references=["NIST Privacy Framework"]
@@ -75,7 +75,7 @@ class DataPrivacyChecker(SecurityChecker):
             title="Data minimization principle required",
             description="Collect and process only the minimum necessary personal data.",
             severity=RiskLevel.HIGH,
-            status=RiskLevel.HIGH,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) Purpose specification, 2) Data inventory, "
                           "3) Necessity assessment, 4) Regular data reviews, "
                           "5) Automated data deletion",
@@ -90,7 +90,7 @@ class DataPrivacyChecker(SecurityChecker):
             title="Encryption for data at rest and in transit required",
             description="Sensitive data must be encrypted at rest and in transit.",
             severity=RiskLevel.CRITICAL,
-            status=RiskLevel.CRITICAL,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) TLS 1.3 for data in transit, 2) AES-256 for data at rest, "
                           "3) End-to-end encryption where appropriate, 4) Key management, "
                           "5) Encrypted backups",
@@ -105,7 +105,7 @@ class DataPrivacyChecker(SecurityChecker):
             title="Strong access controls required",
             description="Implement strict access controls for personal data.",
             severity=RiskLevel.HIGH,
-            status=RiskLevel.HIGH,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) Role-based access control (RBAC), 2) Least privilege, "
                           "3) Multi-factor authentication, 4) Access logging and monitoring, "
                           "5) Regular access reviews",
@@ -120,7 +120,7 @@ class DataPrivacyChecker(SecurityChecker):
             title="Data retention and deletion policies required",
             description="Establish clear policies for data retention and secure deletion.",
             severity=RiskLevel.MEDIUM,
-            status=RiskLevel.MEDIUM,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) Retention schedules, 2) Automated deletion, "
                           "3) Secure data wiping, 4) Backup deletion, "
                           "5) Right to erasure support",
@@ -135,7 +135,7 @@ class DataPrivacyChecker(SecurityChecker):
             title="Privacy-preserving machine learning recommended",
             description="Use privacy-preserving techniques to protect training and inference data.",
             severity=RiskLevel.MEDIUM,
-            status=RiskLevel.MEDIUM,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) Differential privacy, 2) Federated learning, "
                           "3) Homomorphic encryption, 4) Secure multi-party computation, "
                           "5) Synthetic data generation",
@@ -150,7 +150,7 @@ class DataPrivacyChecker(SecurityChecker):
             title="Data anonymization for non-production use",
             description="Anonymize or pseudonymize data for development, testing, and analytics.",
             severity=RiskLevel.MEDIUM,
-            status=RiskLevel.MEDIUM,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) K-anonymity techniques, 2) Data masking, "
                           "3) Synthetic test data, 4) Production data restrictions, "
                           "5) Re-identification risk assessment",
@@ -166,7 +166,7 @@ class DataPrivacyChecker(SecurityChecker):
                 title="Cross-border data transfer protections needed",
                 description="Multi-region deployment requires cross-border transfer safeguards.",
                 severity=RiskLevel.HIGH,
-                status=RiskLevel.HIGH,
+                status=ComplianceStatus.UNKNOWN,
                 recommendation="Implement: 1) Transfer impact assessment, 2) Standard contractual clauses, "
                               "3) Binding corporate rules, 4) Data localization where required, "
                               "5) Transfer logging",
@@ -181,7 +181,7 @@ class DataPrivacyChecker(SecurityChecker):
             title="Data breach detection and response required",
             description="Implement mechanisms to detect and respond to data breaches.",
             severity=RiskLevel.HIGH,
-            status=RiskLevel.HIGH,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) Breach detection systems, 2) Incident response plan, "
                           "3) Breach notification procedures, 4) Forensic capabilities, "
                           "5) Regular breach drills",

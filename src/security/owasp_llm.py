@@ -4,7 +4,7 @@ from typing import List
 from .base import SecurityChecker
 from ..assessor.models import (
     AISystemInfo, SecurityAssessment, Finding,
-    RiskLevel
+    RiskLevel, ComplianceStatus
 )
 
 
@@ -53,7 +53,7 @@ class OWASPLLMChecker(SecurityChecker):
             description="LLM systems are vulnerable to prompt injection attacks where malicious inputs "
                        "can manipulate the model to ignore instructions or perform unintended actions.",
             severity=RiskLevel.HIGH,
-            status=RiskLevel.HIGH,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) Input validation and sanitization, 2) Privilege control for system prompts, "
                           "3) Separate user input from instructions, 4) Content filtering, "
                           "5) Contextual awareness of input sources",
@@ -69,7 +69,7 @@ class OWASPLLMChecker(SecurityChecker):
             description="LLM outputs can contain malicious content like XSS, SQL injection, or shell commands "
                        "if not properly validated before downstream use.",
             severity=RiskLevel.HIGH,
-            status=RiskLevel.HIGH,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) Output validation and encoding, 2) Sandboxing for code execution, "
                           "3) Content Security Policy, 4) Parameterized queries, 5) Output sanitization",
             references=["OWASP LLM02"]
@@ -84,7 +84,7 @@ class OWASPLLMChecker(SecurityChecker):
             description="Malicious or biased data in training sets can compromise model behavior, "
                        "leading to backdoors, biases, or vulnerabilities.",
             severity=RiskLevel.MEDIUM,
-            status=RiskLevel.MEDIUM,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) Data provenance tracking, 2) Data validation and filtering, "
                           "3) Adversarial training, 4) Regular model audits, 5) Secure data pipelines",
             references=["OWASP LLM03"]
@@ -99,7 +99,7 @@ class OWASPLLMChecker(SecurityChecker):
             description="Attackers can craft inputs that cause excessive resource consumption, "
                        "leading to service degradation or outages.",
             severity=RiskLevel.MEDIUM,
-            status=RiskLevel.MEDIUM,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) Rate limiting, 2) Input size limits, 3) Request queuing, "
                           "4) Resource monitoring, 5) Timeout controls, 6) Load balancing",
             references=["OWASP LLM04"]
@@ -113,7 +113,7 @@ class OWASPLLMChecker(SecurityChecker):
             title="Supply chain security risks",
             description="Dependencies on third-party models, datasets, or plugins can introduce vulnerabilities.",
             severity=RiskLevel.HIGH,
-            status=RiskLevel.HIGH,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) Vendor security assessment, 2) Dependency scanning, "
                           "3) Model provenance verification, 4) Plugin security review, "
                           "5) Supply chain monitoring",
@@ -129,7 +129,7 @@ class OWASPLLMChecker(SecurityChecker):
             description="LLMs may inadvertently reveal sensitive information from training data, "
                        "system prompts, or user inputs in their outputs.",
             severity=RiskLevel.CRITICAL,
-            status=RiskLevel.CRITICAL,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) Output filtering for PII/secrets, 2) Training data sanitization, "
                           "3) Prompt protection, 4) Context isolation, 5) Regular audits for leakage",
             references=["OWASP LLM06"]
@@ -145,7 +145,7 @@ class OWASPLLMChecker(SecurityChecker):
                 description="LLM plugins may lack proper input validation and access controls, "
                            "allowing malicious use or privilege escalation.",
                 severity=RiskLevel.HIGH,
-                status=RiskLevel.HIGH,
+                status=ComplianceStatus.UNKNOWN,
                 recommendation="Implement: 1) Plugin input validation, 2) Least privilege access, "
                               "3) Plugin sandboxing, 4) Security review process, 5) Plugin authentication",
                 references=["OWASP LLM07"]
@@ -160,7 +160,7 @@ class OWASPLLMChecker(SecurityChecker):
             description="LLM systems with excessive permissions or autonomy can perform unintended "
                        "high-impact actions without proper authorization.",
             severity=RiskLevel.HIGH,
-            status=RiskLevel.HIGH,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) Least privilege principle, 2) Human-in-the-loop for high-impact actions, "
                           "3) Action approval workflows, 4) Permission boundaries, 5) Audit logging",
             references=["OWASP LLM08"]
@@ -175,7 +175,7 @@ class OWASPLLMChecker(SecurityChecker):
             description="Users or systems may over-rely on LLM outputs without verification, "
                        "leading to misinformation or poor decisions.",
             severity=RiskLevel.MEDIUM,
-            status=RiskLevel.MEDIUM,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) Confidence scores, 2) Source citations, 3) Uncertainty indicators, "
                           "4) Human review for critical decisions, 5) User education on limitations",
             references=["OWASP LLM09"]
@@ -190,7 +190,7 @@ class OWASPLLMChecker(SecurityChecker):
             description="Attackers may attempt to steal or replicate the model through API queries "
                        "or unauthorized access to model artifacts.",
             severity=RiskLevel.MEDIUM,
-            status=RiskLevel.MEDIUM,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) API rate limiting, 2) Query pattern monitoring, "
                           "3) Model access controls, 4) Watermarking, 5) Secure model storage",
             references=["OWASP LLM10"]

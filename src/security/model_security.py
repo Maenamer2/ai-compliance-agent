@@ -4,7 +4,7 @@ from typing import List
 from .base import SecurityChecker
 from ..assessor.models import (
     AISystemInfo, SecurityAssessment, Finding,
-    RiskLevel
+    RiskLevel, ComplianceStatus
 )
 
 
@@ -37,7 +37,7 @@ class ModelSecurityChecker(SecurityChecker):
             title="Model access controls required",
             description="Protect AI models from unauthorized access and modification.",
             severity=RiskLevel.HIGH,
-            status=RiskLevel.HIGH,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) Authentication for model access, 2) Authorization checks, "
                           "3) Model file encryption, 4) Secure model storage, "
                           "5) Access logging and auditing",
@@ -52,7 +52,7 @@ class ModelSecurityChecker(SecurityChecker):
             title="Model integrity verification required",
             description="Verify model integrity to prevent tampering and ensure authenticity.",
             severity=RiskLevel.HIGH,
-            status=RiskLevel.HIGH,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) Model signing and verification, 2) Checksums/hashes, "
                           "3) Tamper detection, 4) Secure model registry, "
                           "5) Version control for models",
@@ -67,7 +67,7 @@ class ModelSecurityChecker(SecurityChecker):
             title="Secure model deployment practices required",
             description="Deploy models securely to prevent exploitation.",
             severity=RiskLevel.MEDIUM,
-            status=RiskLevel.MEDIUM,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) Secure container images, 2) Network segmentation, "
                           "3) Secrets management, 4) Minimal runtime permissions, "
                           "5) Hardened deployment environment",
@@ -82,7 +82,7 @@ class ModelSecurityChecker(SecurityChecker):
             title="Model versioning and rollback capability required",
             description="Maintain model versions and ability to rollback if issues arise.",
             severity=RiskLevel.MEDIUM,
-            status=RiskLevel.MEDIUM,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) Model version control, 2) Deployment history, "
                           "3) Quick rollback procedures, 4) A/B testing capability, "
                           "5) Canary deployments",
@@ -97,7 +97,7 @@ class ModelSecurityChecker(SecurityChecker):
             title="Model monitoring and drift detection required",
             description="Monitor model performance and detect data/concept drift.",
             severity=RiskLevel.HIGH,
-            status=RiskLevel.HIGH,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) Performance monitoring, 2) Data drift detection, "
                           "3) Concept drift detection, 4) Anomaly detection, "
                           "5) Automated alerts and retraining triggers",
@@ -112,7 +112,7 @@ class ModelSecurityChecker(SecurityChecker):
             title="Model API security controls required",
             description="Secure the API endpoints that serve the model.",
             severity=RiskLevel.HIGH,
-            status=RiskLevel.HIGH,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) API authentication (OAuth, API keys), "
                           "2) Rate limiting, 3) Input validation, "
                           "4) Output sanitization, 5) TLS encryption, 6) CORS policies",
@@ -127,7 +127,7 @@ class ModelSecurityChecker(SecurityChecker):
             title="Model provenance tracking recommended",
             description="Track model lineage, training data, and development history.",
             severity=RiskLevel.MEDIUM,
-            status=RiskLevel.MEDIUM,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) Model cards, 2) Training data provenance, "
                           "3) Experiment tracking, 4) Reproducibility documentation, "
                           "5) Dependency tracking",
@@ -142,7 +142,7 @@ class ModelSecurityChecker(SecurityChecker):
             title="Secure inference practices required",
             description="Protect inference process from attacks and data leakage.",
             severity=RiskLevel.MEDIUM,
-            status=RiskLevel.MEDIUM,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) Input sanitization, 2) Output filtering, "
                           "3) Inference sandboxing, 4) Resource limits, "
                           "5) Query logging for anomaly detection",
@@ -157,7 +157,7 @@ class ModelSecurityChecker(SecurityChecker):
             title="Model backup and disaster recovery required",
             description="Ensure model availability through backups and disaster recovery.",
             severity=RiskLevel.MEDIUM,
-            status=RiskLevel.MEDIUM,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) Regular model backups, 2) Disaster recovery plan, "
                           "3) Multi-region redundancy, 4) Backup testing, "
                           "5) Recovery time objectives (RTO)",
@@ -172,7 +172,7 @@ class ModelSecurityChecker(SecurityChecker):
             title="Environment isolation required",
             description="Separate development, testing, and production environments.",
             severity=RiskLevel.MEDIUM,
-            status=RiskLevel.MEDIUM,
+            status=ComplianceStatus.UNKNOWN,
             recommendation="Implement: 1) Separate environments, 2) Different credentials per environment, "
                           "3) Production data restrictions, 4) Promotion workflows, "
                           "5) Environment-specific configurations",
